@@ -18,46 +18,49 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: <Widget>[
-          Flexible(
-            child: Hero(
-              tag: 'logo',
-              child: Image(
-                image: AssetImage('images/logo.png'),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          children: <Widget>[
+            Flexible(
+              child: Hero(
+                tag: 'logo',
+                child: Image(
+                  image: AssetImage('images/logo.png'),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 48.0,
-          ),
-          TextField(
-            keyboardType: TextInputType.emailAddress,
-            textAlign: TextAlign.center,
-            onChanged: (value){
-              email = value;
-            },
-            decoration: kTextFieldStyle.copyWith(hintText: 'Enter your mail'),
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-          TextField(
-            keyboardType: TextInputType.emailAddress,
-            textAlign: TextAlign.center,
-            onChanged: (value){
-              password = value;
-            },
-            decoration: kTextFieldStyle.copyWith(hintText: 'Enter your password'),
-          ),
-          SizedBox(
-            height: 24.0,
-          ),
-          RoundedButton(
-              color: Colors.lightBlueAccent,
-              onPressed: () {},
-              buttonName: 'Register'),
-        ],
+            SizedBox(
+              height: 48.0,
+            ),
+            TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
+              onChanged: (value){
+                email = value;
+              },
+              decoration: kTextFieldStyle.copyWith(hintText: 'Enter your mail'),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
+              onChanged: (value){
+                password = value;
+              },
+              decoration: kTextFieldStyle.copyWith(hintText: 'Enter your password'),
+            ),
+            SizedBox(
+              height: 24.0,
+            ),
+            RoundedButton(
+                color: Colors.lightBlueAccent,
+                onPressed: () {},
+                buttonName: 'Register'),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flashchat_app_flutter/chat_screen.dart';
 import 'package:flashchat_app_flutter/login_screen.dart';
 import 'package:flashchat_app_flutter/register_screen.dart';
 import 'package:flashchat_app_flutter/welcome_screen.dart';
@@ -15,6 +16,7 @@ class FlashChat extends StatelessWidget {
       WelcomeScreen.id: (context) => WelcomeScreen(),
       LoginScreen.id: (context) => LoginScreen(),
       RegisterScreen.id: (context) => RegisterScreen(),
+      ChatScreen.id: (context) => ChatScreen(),
     });
   }
 }

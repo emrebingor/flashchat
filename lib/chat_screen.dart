@@ -1,7 +1,11 @@
 import 'package:flashchat_app_flutter/constant.dart';
+import 'package:flashchat_app_flutter/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
+
+  static const String id = 'chat_screen';
+
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
@@ -19,13 +23,15 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.lightBlueAccent,
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, WelcomeScreen.id);
+            },
             icon: Icon(Icons.close),
           ),
         ],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -42,7 +48,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  },
                   child: Text(
                     'Send',
                     style: kSendTextButtonStyle,

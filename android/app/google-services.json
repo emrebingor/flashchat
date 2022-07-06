@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1005732905317",
+    "project_id": "flash-chat-68d00",
+    "storage_bucket": "flash-chat-68d00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005732905317:android:39bd65b95d8a146c1d218c",
+        "android_client_info": {
+          "package_name": "com.emrebingor.flashchat_app_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005732905317-4b0mr2899bjvkqfqc7m45g61li9covvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpscxLVc4HNwKVSz4RSEPk29ASNQsDaio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005732905317-4b0mr2899bjvkqfqc7m45g61li9covvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

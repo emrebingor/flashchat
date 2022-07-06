@@ -39,46 +39,53 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: animation.value,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Image(
-                  image: AssetImage('images(logo.png'),
-                ),
-              ),
-              AnimatedTextKit(
-                animatedTexts: [
-                  TypewriterAnimatedText(
-                    'Flash Chat',
-                    speed: Duration(milliseconds: 200),
-                    textStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 45.0,
-                        fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image(
+                      height: 60.0,
+                      image: AssetImage('images/logo.png'),
+                    ),
                   ),
-                ],
-              ),
-            ],
-          ),
-          RoundedButton(
-            color: Colors.lightBlueAccent,
-            onPressed: () {
-              Navigator.pushNamed(context, LoginScreen.id);
-            },
-            buttonName: 'Log in',
-          ),
-          RoundedButton(
+                ),
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Flash Chat',
+                      speed: Duration(milliseconds: 200),
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 45.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 48.0,),
+            RoundedButton(
               color: Colors.lightBlueAccent,
               onPressed: () {
-                Navigator.pushNamed(context, RegisterScreen.id);
+                Navigator.pushNamed(context, LoginScreen.id);
               },
-              buttonName: 'Register'),
-        ],
+              buttonName: 'Log in',
+            ),
+            RoundedButton(
+                color: Colors.lightBlueAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, RegisterScreen.id);
+                },
+                buttonName: 'Register'),
+          ],
+        ),
       ),
     );
   }
