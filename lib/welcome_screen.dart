@@ -1,3 +1,5 @@
+import 'package:flashchat_app_flutter/login_screen.dart';
+import 'package:flashchat_app_flutter/register_screen.dart';
 import 'package:flashchat_app_flutter/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -65,12 +67,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           ),
           RoundedButton(
             color: Colors.lightBlueAccent,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, LoginScreen.id);
+            },
             buttonName: 'Log in',
           ),
           RoundedButton(
               color: Colors.lightBlueAccent,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RegisterScreen.id);
+              },
               buttonName: 'Register'),
         ],
       ),
