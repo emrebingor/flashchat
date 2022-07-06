@@ -18,3 +18,15 @@ const kTextFieldStyle = InputDecoration(
 
 const kSendTextButtonStyle = TextStyle(
     color: Colors.lightBlueAccent, fontWeight: FontWeight.bold, fontSize: 18.0);
+
+const kContainerDecoration = BoxDecoration(
+  border: Border(
+    top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+  ),
+);
+
+const kTextFieldDecoration = InputDecoration(
+    contentPadding:
+    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+    border: InputBorder.none,
+    hintText: 'Type your message here...');

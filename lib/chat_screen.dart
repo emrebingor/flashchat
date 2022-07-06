@@ -7,6 +7,8 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  String? message;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +25,22 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
+            decoration: kContainerDecoration,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                TextField(),
+                Expanded(
+                  child: TextField(
+                    onChanged: (value) {
+                      message = value;
+                    },
+                    decoration: kTextFieldDecoration,
+                  ),
+                ),
                 TextButton(
                   onPressed: () {},
                   child: Text(
