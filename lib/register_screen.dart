@@ -62,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 24.0,
             ),
             RoundedButton(
-                color: Colors.lightBlueAccent,
+                color: Colors.blueAccent,
                 onPressed: () async {
                   try{
                     final newUser = await _auth.createUserWithEmailAndPassword(
