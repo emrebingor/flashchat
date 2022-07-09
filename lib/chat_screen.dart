@@ -39,6 +39,16 @@ class _ChatScreenState extends State<ChatScreen> {
     }
 
 
+
+    void messagesStream() async{
+     await for(var snapshot in _firestore.collection('messages').snapshots()){
+       for(var message in snapshot.docs){
+         print(message.data());
+       }
+     }
+    }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +60,7 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: <Widget>[
           IconButton(
             onPressed: () {
+              messagesStream();
               _auth.signOut();
               Navigator.pushNamed(context, WelcomeScreen.id);
             },
@@ -61,6 +72,35 @@ class _ChatScreenState extends State<ChatScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          StreamBuilder<QuerySnapshot>(
+            stream: _firestore.collection('messages').snapshots(),
+            builder: (context, snapshot){
+              List<Text> messageWidgets = [];
+              if (!snapshot.hasData){
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.lightBlueAccent,
+                  ),
+                );
+              }
+                final messages = snapshot.data?.docs;
+
+                for (var message in messages!){
+                  try{
+
+                    final messageText = message.get('text');
+                    final messageSender = message.get('sender');
+                    final messageWidget = Text('$messageText from $messageSender');
+
+                    messageWidgets.add(messageWidget);
+                  } catch(e){
+                    print(e);
+                    }
+                  }
+                return Column(children: messageWidgets,
+                );
+            },
+          ),
           Container(
             decoration: kContainerDecoration,
             child: Row(
