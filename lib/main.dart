@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flashchat_app_flutter/chat_screen.dart';
-import 'package:flashchat_app_flutter/login_screen.dart';
-import 'package:flashchat_app_flutter/register_screen.dart';
-import 'package:flashchat_app_flutter/welcome_screen.dart';
+import 'package:flashchat_app_flutter/screens/chat_screen.dart';
+import 'package:flashchat_app_flutter/screens/login_screen.dart';
+import 'package:flashchat_app_flutter/screens/register_screen.dart';
+import 'package:flashchat_app_flutter/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async{

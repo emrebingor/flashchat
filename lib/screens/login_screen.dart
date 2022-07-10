@@ -1,19 +1,18 @@
-import 'package:flashchat_app_flutter/chat_screen.dart';
-import 'package:flashchat_app_flutter/constant.dart';
-import 'package:flashchat_app_flutter/rounded_button.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flashchat_app_flutter/screens/chat_screen.dart';
+import 'package:flashchat_app_flutter/constant.dart';
+import 'package:flashchat_app_flutter/widgets/rounded_button.dart';
+import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-
-class RegisterScreen extends StatefulWidget {
-  static const String id = 'register_screen';
+class LoginScreen extends StatefulWidget {
+  static const String id = 'login_screen';
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
   String? email;
@@ -67,25 +66,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 24.0,
               ),
               RoundedButton(
-                  color: Colors.blueAccent,
+                  color: Colors.lightBlueAccent,
                   onPressed: () async {
                     setState((){
                       showSpinner = true;
                     });
-                    try{
-                      final newUser = await _auth.createUserWithEmailAndPassword(
+                    try {
+                      final user = await _auth.signInWithEmailAndPassword(
                           email: email.toString(), password: password.toString());
-                      if (newUser != null){
+                      if (user != null){
                         Navigator.pushNamed(context, ChatScreen.id);
                       }
                       setState((){
                         showSpinner = false;
                       });
-                    } catch(e){
+                    } catch (e) {
                       print(e);
                     }
                   },
-                  buttonName: 'Register'),
+                  buttonName: 'Log in')
             ],
           ),
         ),

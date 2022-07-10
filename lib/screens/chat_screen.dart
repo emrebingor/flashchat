@@ -1,5 +1,5 @@
 import 'package:flashchat_app_flutter/constant.dart';
-import 'package:flashchat_app_flutter/welcome_screen.dart';
+import 'package:flashchat_app_flutter/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -56,42 +56,44 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          MessagesStream(),
-          Container(
-            decoration: kContainerDecoration,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: TextField(
-                    controller: messageTextController,
-                    onChanged: (value) {
-                      message = value;
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            MessagesStream(),
+            Container(
+              decoration: kContainerDecoration,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      controller: messageTextController,
+                      onChanged: (value) {
+                        message = value;
+                      },
+                      decoration: kTextFieldDecoration,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      messageTextController.clear();
+                      _firestore.collection('messages').add({
+                        'text': message,
+                        'sender': loggedInUser?.email,
+                      });
                     },
-                    decoration: kTextFieldDecoration,
+                    child: Text(
+                      'Send',
+                      style: kSendTextButtonStyle,
+                    ),
                   ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    messageTextController.clear();
-                    _firestore.collection('messages').add({
-                      'text': message,
-                      'sender': loggedInUser?.email,
-                    });
-                  },
-                  child: Text(
-                    'Send',
-                    style: kSendTextButtonStyle,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -103,7 +105,6 @@ class MessagesStream extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
       stream: _firestore.collection('messages').snapshots(),
       builder: (context, snapshot) {
-        List<MessageBubble> messageBubbles = [];
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
@@ -112,7 +113,7 @@ class MessagesStream extends StatelessWidget {
           );
         }
         final messages = snapshot.data?.docs.reversed;
-
+        List<MessageBubble> messageBubbles = [];
         for (var message in messages!) {
           try {
             final messageText = message.get('text');

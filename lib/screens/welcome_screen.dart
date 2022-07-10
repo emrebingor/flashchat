@@ -1,6 +1,6 @@
-import 'package:flashchat_app_flutter/login_screen.dart';
-import 'package:flashchat_app_flutter/register_screen.dart';
-import 'package:flashchat_app_flutter/rounded_button.dart';
+import 'package:flashchat_app_flutter/screens/login_screen.dart';
+import 'package:flashchat_app_flutter/screens/register_screen.dart';
+import 'package:flashchat_app_flutter/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
